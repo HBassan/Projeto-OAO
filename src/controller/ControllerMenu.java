@@ -5,7 +5,7 @@ import model.Usuario;
 import view.menu;
 import view.saldo;
 import view.extrato;
-
+import view.compra;
 
 public class ControllerMenu {
     private menu view;
@@ -25,4 +25,11 @@ public class ControllerMenu {
         viewExtrato.setVisible(true);
         view.setVisible(false);
     }
+    
+    public void compra(Usuario user, Moedas moedas){        
+        compra viewCompra = new view.compra(user, moedas);
+        viewCompra.setVisible(true);
+        view.setVisible(false);
+    }
+    
 }

@@ -164,7 +164,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_ExtratoActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
-        
+        controller.compra(usuario, moedas);
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VenderActionPerformed
