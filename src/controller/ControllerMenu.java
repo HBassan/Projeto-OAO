@@ -4,12 +4,10 @@ import model.Moedas;
 import model.Usuario;
 import view.atualizar;
 import view.menu;
-import view.saldo;
-import view.extrato;
-import view.compra;
 import view.deposito;
 import view.saque;
-import view.venda;
+import view.autentica;
+import view.compra;
 
 
 public class ControllerMenu {
@@ -20,26 +18,26 @@ public class ControllerMenu {
     }
     
     public void saldo(Usuario user, Moedas moedas){        
-        saldo viewSaldo = new view.saldo(user, moedas);
-        viewSaldo.setVisible(true);
+        autentica viewAutentica = new view.autentica(user, moedas, 0);
+        viewAutentica.setVisible(true);
         view.setVisible(false);
     }
     
     public void extrato(Usuario user, Moedas moedas){        
-        extrato viewExtrato = new view.extrato(user, moedas);
-        viewExtrato.setVisible(true);
+        autentica viewAutentica = new view.autentica(user, moedas, 1);
+        viewAutentica.setVisible(true);
         view.setVisible(false);
     }
     
     public void compra(Usuario user, Moedas moedas){        
-        compra viewCompra = new view.compra(user, moedas);
-        viewCompra.setVisible(true);
+        autentica viewAutentica = new view.autentica(user, moedas, 2);
+        viewAutentica.setVisible(true);
         view.setVisible(false);
     }
     
     public void venda(Usuario user, Moedas moedas){        
-        venda viewVenda = new view.venda(user, moedas);
-        viewVenda.setVisible(true);
+        autentica viewAutentica = new view.autentica(user, moedas, 3);
+        viewAutentica.setVisible(true);
         view.setVisible(false);
     }
     
