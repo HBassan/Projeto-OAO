@@ -4,11 +4,14 @@ package project.oao;
  *
  * @author Henrique Bassan
  */
+
+import view.login;
+
 public class ProjectOao {
 
-    
     public static void main(String[] args) {
-        // TODO code application logic here
+        login lf = new login();
+        lf.setVisible(true);
     }
     
 }
