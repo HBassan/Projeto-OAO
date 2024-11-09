@@ -18,7 +18,6 @@ public class ControllerAutentica {
     }
     
     public void entrar(Usuario user, Moedas moedas,  int i){        
-        System.out.println(Integer.parseInt(view.getSenha_login().getText()));
         if(Integer.parseInt(view.getSenha_login().getText()) == Integer.parseInt(user.getSenha())){
             if(i == 0){
                 saldo viewSaldo = new view.saldo(user, moedas);

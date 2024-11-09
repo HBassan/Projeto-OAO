@@ -16,7 +16,6 @@ public class menu extends javax.swing.JFrame {
         moedas = moeda;
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
-        System.out.println(usuario);
     }
     
     

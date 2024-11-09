@@ -23,7 +23,6 @@ public class ControllerVenda {
         float bit = user.getBit();
         float novo = bit - valor;
         float taxado = valor - (valor/100)*3;
-        System.out.println(taxado);
         if (novo>0){
             user.setBit(novo);
             LocalDateTime agora = LocalDateTime.now();
@@ -50,7 +49,6 @@ public class ControllerVenda {
         float eth = user.getEth();
         float novo = eth - valor;
         float taxado = valor - (valor/100)*2;
-        System.out.println(taxado);
         if (novo>0){
             user.setEth(novo);
             LocalDateTime agora = LocalDateTime.now();
@@ -77,7 +75,6 @@ public class ControllerVenda {
         float rip = user.getRip();
         float novo = rip - valor;
         float taxado = valor - (valor/100);
-        System.out.println(taxado);
         if (novo>0){
             user.setRip(novo);
             LocalDateTime agora = LocalDateTime.now();

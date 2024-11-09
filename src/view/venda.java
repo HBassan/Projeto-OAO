@@ -18,7 +18,6 @@ public class venda extends javax.swing.JFrame {
         vBit.setText(Float.toString(moeda.getValor_bit()));
         vEth.setText(Float.toString(moeda.getValor_eth()));
         vRip.setText(Float.toString(moeda.getValor_rip()));
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
     }

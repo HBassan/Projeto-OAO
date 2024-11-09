@@ -20,8 +20,6 @@ public class ControllerLogin {
     }
     
     public void teste(){        
-        System.out.println(view.getCpf().getText());
-        System.out.println(view.getSenha_login().getText());
         if(Integer.parseInt(view.getCpf().getText()) == 12345678 && Integer.parseInt(view.getSenha_login().getText()) == 123456){
             menu viewMenu = new view.menu(new Usuario("Bassan", "12345678", "123456", 1000.12f, 2.56f, 3.78f, 10.90f), new Moedas());
             viewMenu.setVisible(true);

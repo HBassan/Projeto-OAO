@@ -15,7 +15,6 @@ public class saldo extends javax.swing.JFrame {
         controller = new ControllerSaldo(this);
         usuario = user;
         moedas = moeda;
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
         Reais.setText(Float.toString(user.getReais()));

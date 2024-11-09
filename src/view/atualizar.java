@@ -15,15 +15,11 @@ public class atualizar extends javax.swing.JFrame {
         initComponents();
         controller = new ControllerAtualiza(this);
         usuario = user;
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
         float bit = moeda.getValor_bit();
         float eth = moeda.getValor_eth();
         float rip = moeda.getValor_rip();
-        System.out.println(bit);
-        System.out.println(eth);
-        System.out.println(rip);
         BitA.setText(Float.toString(bit));
         EthA.setText(Float.toString(eth));
         RipA.setText(Float.toString(rip));
@@ -31,10 +27,6 @@ public class atualizar extends javax.swing.JFrame {
         bit = bit + bit*pct;
         eth = eth + eth*pct;
         rip = rip + rip*pct;
-        System.out.println(pct);
-        System.out.println(bit);
-        System.out.println(eth);
-        System.out.println(rip);
         moeda.setValor_bit(bit);
         moeda.setValor_eth(eth);
         moeda.setValor_rip(rip);

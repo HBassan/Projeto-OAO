@@ -14,7 +14,6 @@ public class extrato extends javax.swing.JFrame {
         controller = new ControllerExtrato(this);
         usuario = user;
         moedas = moeda;
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
         for (String i : user.getExtrato()) {

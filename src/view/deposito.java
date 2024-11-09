@@ -15,7 +15,6 @@ public class deposito extends javax.swing.JFrame {
         controller = new ControllerDeposito(this);
         usuario = user;
         moedas = moeda;
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
     }

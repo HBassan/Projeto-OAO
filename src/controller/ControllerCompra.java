@@ -23,7 +23,6 @@ public class ControllerCompra {
         float reais = user.getReais();
         float novo = reais - valor;
         float taxado = valor - (valor/100)*2;
-        System.out.println(taxado);
         if (novo>0){
             user.setReais(novo);
             LocalDateTime agora = LocalDateTime.now();
@@ -50,7 +49,6 @@ public class ControllerCompra {
         float reais = user.getReais();
         float novo = reais - valor;
         float taxado = valor - (valor/100);
-        System.out.println(taxado);
         if (novo>0){
             user.setReais(novo);
             LocalDateTime agora = LocalDateTime.now();
@@ -77,7 +75,6 @@ public class ControllerCompra {
         float reais = user.getReais();
         float novo = reais - valor;
         float taxado = valor - (valor/100);
-        System.out.println(taxado);
         if (novo>0){
             user.setReais(novo);
             LocalDateTime agora = LocalDateTime.now();

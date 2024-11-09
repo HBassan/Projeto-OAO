@@ -15,7 +15,6 @@ public class saque extends javax.swing.JFrame {
         controller = new ControllerSaque(this);
         usuario = user;
         moedas = moeda;
-        System.out.println(usuario);
         Cpf.setText(user.getCpf());
         Nome.setText(user.getNome());
     }
