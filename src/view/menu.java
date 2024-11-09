@@ -180,7 +180,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_SacarActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        
+        controller.atualizar(usuario, moedas);
     }//GEN-LAST:event_AtualizarActionPerformed
 
 

@@ -2,6 +2,7 @@ package controller;
 
 import model.Moedas;
 import model.Usuario;
+import view.atualizar;
 import view.menu;
 import view.saldo;
 import view.extrato;
@@ -51,6 +52,12 @@ public class ControllerMenu {
     public void saque(Usuario user, Moedas moedas){        
         saque viewSaque = new view.saque(user, moedas);
         viewSaque.setVisible(true);
+        view.setVisible(false);
+    }
+    
+    public void atualizar(Usuario user, Moedas moedas){     
+        atualizar viewAtualizar = new view.atualizar(user, moedas);
+        viewAtualizar.setVisible(true);
         view.setVisible(false);
     }
 }
