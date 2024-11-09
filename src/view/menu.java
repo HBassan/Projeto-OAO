@@ -172,11 +172,11 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_VenderActionPerformed
 
     private void DepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepositarActionPerformed
-        
+        controller.deposito(usuario, moedas);
     }//GEN-LAST:event_DepositarActionPerformed
 
     private void SacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SacarActionPerformed
-        
+        controller.saque(usuario, moedas);
     }//GEN-LAST:event_SacarActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
