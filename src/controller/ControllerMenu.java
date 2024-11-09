@@ -6,6 +6,7 @@ import view.menu;
 import view.saldo;
 import view.extrato;
 import view.compra;
+import view.deposito;
 import view.venda;
 
 
@@ -37,6 +38,12 @@ public class ControllerMenu {
     public void venda(Usuario user, Moedas moedas){        
         venda viewVenda = new view.venda(user, moedas);
         viewVenda.setVisible(true);
+        view.setVisible(false);
+    }
+    
+    public void deposito(Usuario user, Moedas moedas){        
+        deposito viewDeposito = new view.deposito(user, moedas);
+        viewDeposito.setVisible(true);
         view.setVisible(false);
     }
 }
