@@ -1,5 +1,7 @@
 package controller;
 
+import DAO.Conexao;
+import DAO.UsuarioDAO;
 import model.Usuario;
 import model.Moedas;
 import view.login;
@@ -30,5 +32,32 @@ public class ControllerLogin {
         }
     }
     
-    
+    public void loginUsuario(){
+        Usuario user = new Usuario(null,view.getCpf().getText(),view.getSenha_login().getText(), 0, 0, 0, 0);
+        Conexao conexao = new Conexao();
+        try{
+            Connection conn = conexao.getConnection();
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            ResultSet res = dao.consultar(user);
+            if(res.next()){
+                JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                String nome = res.getString("nome");
+                String cpf = res.getString("usuario");
+                String senha = res.getString("senha");
+                float reais = res.getFloat("reais");
+                float bit = res.getFloat("bit");
+                float rip = res.getFloat("rip");
+                float eth = res.getFloat("eth");
+                menu viewMenu = new view.menu(new Usuario(nome, cpf, senha, reais, bit, rip, eth), new Moedas());
+                viewMenu.setVisible(true);
+                view.setVisible(false);
+            } else{
+                JOptionPane.showMessageDialog(view, "Login não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
+                
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
 }
