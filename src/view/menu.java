@@ -156,11 +156,11 @@ public class menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaldoActionPerformed
-        
+        controller.saldo(usuario, moedas);
     }//GEN-LAST:event_SaldoActionPerformed
 
     private void ExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExtratoActionPerformed
-        
+        controller.extrato(usuario, moedas);
     }//GEN-LAST:event_ExtratoActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
