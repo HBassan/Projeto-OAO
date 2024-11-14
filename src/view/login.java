@@ -116,7 +116,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_CpfActionPerformed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        controller.teste();
+        controller.loginUsuario();
     }//GEN-LAST:event_bLoginActionPerformed
 
     private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
