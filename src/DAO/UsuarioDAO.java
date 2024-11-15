@@ -29,13 +29,31 @@ public class UsuarioDAO {
     }
     
     public ResultSet consultar(Usuario usuario) throws SQLException{
-        String sql = "select * from usuario where cpf = '"+usuario.getCpf()+"' AND senha = '"+usuario.getSenha()+"'";
+        String sql = "select * from usuario where cpf = ? AND senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
+        System.out.println("oi");
         statement.setString(1, usuario.getCpf());
         statement.setString(2, usuario.getSenha());
-        statement.execute();
-        ResultSet resultado = statement.getResultSet();
+        ResultSet rs = statement.executeQuery();
+        System.out.println("teste");
+        System.out.println(rs.getString("nome"));
+        ResultSet res = statement.getResultSet();
+        System.out.println(res);
+        String nome = res.getString("nome");
+        System.out.println("nome");
+        String cpf = res.getString("usuario");
+        System.out.println("cpf");
+        String senha = res.getString("senha");
+        System.out.println("senha");
+        float reais = res.getFloat("reais");
+        System.out.println("r");
+        float bit = res.getFloat("bit");
+        System.out.println("b");
+        float rip = res.getFloat("rip");
+        System.out.println("r");
+        float eth = res.getFloat("eth");
+        System.out.println("e");
         conn.close();
-        return resultado;
+        return res;
     }
 }

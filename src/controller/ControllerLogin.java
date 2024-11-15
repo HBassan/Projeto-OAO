@@ -34,15 +34,11 @@ public class ControllerLogin {
         Usuario user = new Usuario(null,view.getCpf().getText(),view.getSenha_login().getText(), 0, 0, 0, 0);
         Conexao conexao = new Conexao();
         try{
-            System.out.println("1");
             Connection conn = conexao.getConnection();
-            System.out.println("2");
             UsuarioDAO dao = new UsuarioDAO(conn);
-            System.out.println("3");
             ResultSet res = dao.consultar(user);
             System.out.println("4");
             if(res.next()){
-                JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 String nome = res.getString("nome");
                 String cpf = res.getString("usuario");
                 String senha = res.getString("senha");
@@ -50,6 +46,7 @@ public class ControllerLogin {
                 float bit = res.getFloat("bit");
                 float rip = res.getFloat("rip");
                 float eth = res.getFloat("eth");
+                JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 menu viewMenu = new view.menu(new Usuario(nome, cpf, senha, reais, bit, rip, eth), new Moedas());
                 viewMenu.setVisible(true);
                 view.setVisible(false);
