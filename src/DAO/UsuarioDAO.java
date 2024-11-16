@@ -16,21 +16,22 @@ public class UsuarioDAO {
     }
     
     public void inserir(Usuario usuario) throws SQLException{
-        //Array tagsArray = ;
-        String sql = "insert into usuarios (nome, cpf, senha, extrato) values ('"+usuario.getNome()+"', '"+usuario.getCpf()+"', '" +usuario.getSenha()+"')";
+        String sql = "insert into usuarios (nome, cpf, senha) values ('"+usuario.getNome()+"', '"+usuario.getCpf()+"', '" +usuario.getSenha()+"')";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         conn.close();
     }
     
     public void atualizar(Usuario usuario) throws SQLException{
-        String sql = "UPDATE usuarios SET reais = ?, bit = ?, eth = ?, rip = ? WHERE cpf = ?";
+        String sql = "UPDATE usuarios SET reais = ?, bit = ?, eth = ?, rip = ?, extrato = ? WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setDouble(1, usuario.getReais());
         statement.setDouble(2, usuario.getBit());
         statement.setDouble(3, usuario.getEth());
         statement.setDouble(4, usuario.getRip());
-        statement.setString(5, usuario.getCpf());
+        Array sqlArray = conn.createArrayOf("TEXT", usuario.getExtrato().toArray());
+        statement.setArray(5, sqlArray);
+        statement.setString(6, usuario.getCpf());
         statement.execute();
         conn.close();
     }
@@ -42,7 +43,6 @@ public class UsuarioDAO {
             pstmt.setString(1, usuario.getCpf());
             pstmt.setString(2, usuario.getSenha());
             ResultSet rs = pstmt.executeQuery();
-
             if (rs.next()) {
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCpf(rs.getString("cpf"));
@@ -51,10 +51,12 @@ public class UsuarioDAO {
                 usuario.setBit(rs.getFloat("bit"));
                 usuario.setEth(rs.getFloat("eth"));
                 usuario.setRip(rs.getFloat("rip"));
-                Array tagsArray = rs.getArray("extrato");
-                String[] tags = (String[]) tagsArray.getArray();
-                ArrayList<String> tagsList = new ArrayList<>(Arrays.asList(tags));
-                usuario.setExtrato(tagsList);
+                if(rs.getArray("extrato") !=  null){
+                    Array tagsArray = rs.getArray("extrato");
+                    String[] tags = (String[]) tagsArray.getArray();
+                    ArrayList<String> tagsList = new ArrayList<>(Arrays.asList(tags));
+                    usuario.setExtrato(tagsList);
+                }
                 return rs;
             }
             else{

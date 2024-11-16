@@ -38,14 +38,6 @@ public class atualizar extends javax.swing.JFrame {
         EthN.setText(Float.toString(eth));
         RipN.setText(Float.toString(rip));
         moedas = moeda;
-        Conexao conex = new Conexao();
-        try{       
-            Connection con = conex.getConnection();
-            MoedasDAO Mdao = new MoedasDAO(con);
-            Mdao.atualizar(moedas);
-        } catch(SQLException e){
-            System.out.println("ERRO");
-        }
     }
 
     

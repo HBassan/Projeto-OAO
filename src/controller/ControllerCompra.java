@@ -73,6 +73,14 @@ public class ControllerCompra {
             extrato.add("Horário: " + horarioAtual + "   COMPRA  -R$" + valor + "    +" + compra + " ETH");
             user.setEth(eth);
             user.setExtrato(extrato);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);
@@ -99,6 +107,14 @@ public class ControllerCompra {
             extrato.add("Horário: " + horarioAtual + "   COMPRA  -R$" + valor + "    +" + compra + " XRP");
             user.setRip(rip);
             user.setExtrato(extrato);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);

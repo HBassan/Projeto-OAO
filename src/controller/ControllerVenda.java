@@ -73,6 +73,14 @@ public class ControllerVenda {
             extrato.add("Horário: " + horarioAtual + "   VENDA  +R$" + venda + "    -" + valor + " ETH");
             user.setReais(reais);
             user.setExtrato(extrato);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);
@@ -99,6 +107,14 @@ public class ControllerVenda {
             extrato.add("Horário: " + horarioAtual + "   VENDA  +R$" + venda + "    -" + valor + " XRP");
             user.setReais(reais);
             user.setExtrato(extrato);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);
