@@ -2,6 +2,7 @@ package controller;
 
 import DAO.Conexao;
 import DAO.UsuarioDAO;
+import DAO.MoedasDAO;
 import model.Usuario;
 import model.Moedas;
 import view.login;
@@ -9,7 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
-import javax.swing.JTextField;
 import view.menu;
 
 public class ControllerLogin {
@@ -20,27 +20,20 @@ public class ControllerLogin {
     }
     
     public void loginUsuario(){
+        Moedas moedas = new Moedas();
         Usuario user = new Usuario(null,view.getCpf().getText(),view.getSenha_login().getText(), 0, 0, 0, 0);
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
             UsuarioDAO dao = new UsuarioDAO(conn);
             ResultSet res = dao.consultar(user);
-            System.out.println("4");
             if(res != null){
-                System.out.println("oi");
-                String nome = user.getNome();
-                System.out.println(nome);
-                String cpf = user.getCpf();
-                System.out.println(cpf);
-                String senha = user.getSenha();
-                System.out.println(senha);
-                float reais = user.getReais();
-                float bit = user.getBit();
-                float rip = user.getRip();
-                float eth = user.getEth();
                 JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                menu viewMenu = new view.menu(new Usuario(nome, cpf, senha, reais, bit, rip, eth), new Moedas());
+                Conexao conex = new Conexao();
+                Connection con = conex.getConnection();
+                MoedasDAO Mdao = new MoedasDAO(con);
+                Mdao.buscar(moedas);
+                menu viewMenu = new view.menu(user, moedas);
                 viewMenu.setVisible(true);
                 view.setVisible(false);
             } else{
