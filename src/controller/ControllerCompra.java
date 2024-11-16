@@ -1,5 +1,9 @@
 package controller;
 
+import DAO.Conexao;
+import DAO.UsuarioDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,6 +39,14 @@ public class ControllerCompra {
             extrato.add("Horário: " + horarioAtual + "   COMPRA  -R$" + valor + "    +" + compra + " BTC");
             user.setBit(bit);
             user.setExtrato(extrato);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);

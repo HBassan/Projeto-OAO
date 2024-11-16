@@ -4,6 +4,9 @@ import model.Usuario;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.sql.Array;
 
 public class UsuarioDAO {
     private Connection conn;
@@ -47,6 +50,10 @@ public class UsuarioDAO {
                 usuario.setBit(rs.getFloat("bit"));
                 usuario.setEth(rs.getFloat("eth"));
                 usuario.setRip(rs.getFloat("rip"));
+                Array tagsArray = rs.getArray("extrato");
+                String[] tags = (String[]) tagsArray.getArray();
+                ArrayList<String> tagsList = new ArrayList<>(Arrays.asList(tags));
+                usuario.setExtrato(tagsList);
                 return rs;
             }
             else{

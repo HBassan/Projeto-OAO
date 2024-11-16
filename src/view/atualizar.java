@@ -1,6 +1,10 @@
 package view;
 
+import DAO.Conexao;
+import DAO.MoedasDAO;
 import controller.ControllerAtualiza;
+import java.sql.Connection;
+import java.sql.SQLException;
 import model.Moedas;
 import model.Usuario;
 import java.util.Random;
@@ -34,6 +38,14 @@ public class atualizar extends javax.swing.JFrame {
         EthN.setText(Float.toString(eth));
         RipN.setText(Float.toString(rip));
         moedas = moeda;
+        Conexao conex = new Conexao();
+        try{       
+            Connection con = conex.getConnection();
+            MoedasDAO Mdao = new MoedasDAO(con);
+            Mdao.atualizar(moedas);
+        } catch(SQLException e){
+            System.out.println("ERRO");
+        }
     }
 
     

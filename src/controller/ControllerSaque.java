@@ -1,5 +1,9 @@
 package controller;
 
+import DAO.Conexao;
+import DAO.UsuarioDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Moedas;
 import model.Usuario;
@@ -21,6 +25,14 @@ public class ControllerSaque {
         float novo = reais - valor;
         if (novo>0){
             user.setReais(novo);
+            Conexao conex = new Conexao();
+            try{       
+                Connection con = conex.getConnection();
+                UsuarioDAO dao = new UsuarioDAO(con);
+                dao.atualizar(user);
+            } catch(SQLException e){
+                System.out.println("ERRO");
+            }
             saldo viewSaldo = new view.saldo(user, moedas);
             viewSaldo.setVisible(true);
             view.setVisible(false);
