@@ -16,14 +16,15 @@ public class UsuarioDAO {
     }
     
     public void inserir(Usuario usuario) throws SQLException{
-        String sql = "insert into usuario (nome, cpf, senha) values ('"+usuario.getNome()+"', '"+usuario.getCpf()+"', '" +usuario.getSenha()+"')";
+        //Array tagsArray = ;
+        String sql = "insert into usuarios (nome, cpf, senha, extrato) values ('"+usuario.getNome()+"', '"+usuario.getCpf()+"', '" +usuario.getSenha()+"')";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         conn.close();
     }
     
     public void atualizar(Usuario usuario) throws SQLException{
-        String sql = "UPDATE usuario SET reais = ?, bit = ?, eth = ?, rip = ? WHERE cpf = ?";
+        String sql = "UPDATE usuarios SET reais = ?, bit = ?, eth = ?, rip = ? WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setDouble(1, usuario.getReais());
         statement.setDouble(2, usuario.getBit());
@@ -36,7 +37,7 @@ public class UsuarioDAO {
     
     public ResultSet consultar(Usuario usuario) throws SQLException{
         try (Connection con = conn) {
-            String sql = "SELECT * FROM usuario WHERE cpf = ? AND senha = ?";
+            String sql = "SELECT * FROM usuarios WHERE cpf = ? AND senha = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, usuario.getCpf());
             pstmt.setString(2, usuario.getSenha());
