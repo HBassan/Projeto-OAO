@@ -20,40 +20,41 @@ public class UsuarioDAO {
     }
     
     public void atualizar(Usuario usuario) throws SQLException{
-        String sql = "update usuario set senha =  ? where cpf = ?";
+        String sql = "UPDATE usuario SET reais = ?, bit = ?, eth = ?, rip = ? WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, usuario.getSenha());
-        statement.setString(2, usuario.getCpf());
+        statement.setDouble(1, usuario.getReais());
+        statement.setDouble(2, usuario.getBit());
+        statement.setDouble(3, usuario.getEth());
+        statement.setDouble(4, usuario.getRip());
+        statement.setString(5, usuario.getCpf());
         statement.execute();
         conn.close();
     }
     
     public ResultSet consultar(Usuario usuario) throws SQLException{
-        String sql = "select * from usuario where cpf = ? AND senha = ?";
-        PreparedStatement statement = conn.prepareStatement(sql);
-        System.out.println("oi");
-        statement.setString(1, usuario.getCpf());
-        statement.setString(2, usuario.getSenha());
-        ResultSet rs = statement.executeQuery();
-        System.out.println("teste");
-        System.out.println(rs.getString("nome"));
-        ResultSet res = statement.getResultSet();
-        System.out.println(res);
-        String nome = res.getString("nome");
-        System.out.println("nome");
-        String cpf = res.getString("usuario");
-        System.out.println("cpf");
-        String senha = res.getString("senha");
-        System.out.println("senha");
-        float reais = res.getFloat("reais");
-        System.out.println("r");
-        float bit = res.getFloat("bit");
-        System.out.println("b");
-        float rip = res.getFloat("rip");
-        System.out.println("r");
-        float eth = res.getFloat("eth");
-        System.out.println("e");
-        conn.close();
-        return res;
+        try (Connection con = conn) {
+            String sql = "SELECT * FROM usuario WHERE cpf = ? AND senha = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, usuario.getCpf());
+            pstmt.setString(2, usuario.getSenha());
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                usuario.setNome(rs.getString("nome"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setReais(rs.getFloat("reais"));
+                usuario.setBit(rs.getFloat("bit"));
+                usuario.setEth(rs.getFloat("eth"));
+                usuario.setRip(rs.getFloat("rip"));
+                return rs;
+            }
+            else{
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
