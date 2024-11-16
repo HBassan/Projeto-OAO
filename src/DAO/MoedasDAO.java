@@ -14,7 +14,7 @@ public class MoedasDAO {
     }
     
     public void atualizar(Moedas moedas) throws SQLException{
-        String sql = "UPDATE usuario SET bit = ?, eth = ?, rip = ? WHERE ref = ?";
+        String sql = "UPDATE moedas SET bit = ?, eth = ?, rip = ? WHERE ref = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setDouble(1, moedas.getValor_bit());
         statement.setDouble(2, moedas.getValor_eth());
